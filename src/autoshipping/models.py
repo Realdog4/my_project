@@ -40,11 +40,15 @@ class Delivery(models.Model):
 
 class PriceList(models.Model):
     car = models.ForeignKey(Car, on_delete=models.CASCADE)
-    price = models.DecimalField(max_digits=15, decimal_places=2)
     delivery = models.OneToOneField(Delivery, on_delete=models.CASCADE)
 
+    @property
+    def price(self):
+        return self.car.price
+
     def __str__(self):
-        return f"{self.car.name} - Price: {self.price}, Delivery: {self.delivery.cost}"
+        return f"{self.car.name} - Price: {self.car.price}, Delivery: {self.delivery.cost}"
+
 
 
 class Orders(models.Model):
