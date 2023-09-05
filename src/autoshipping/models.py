@@ -50,7 +50,6 @@ class PriceList(models.Model):
         return f"{self.car.name} - Price: {self.car.price}, Delivery: {self.delivery.cost}"
 
 
-
 class Orders(models.Model):
     client = models.ForeignKey(User, on_delete=models.CASCADE)
     order_date = models.DateTimeField(auto_now_add=True)

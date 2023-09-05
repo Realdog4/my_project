@@ -17,9 +17,12 @@ class TestCarModel(TestCase):
 class TestPriceListModel(TestCase):
 
     def test_price_list_creation(self):
-        price_list = create_sample_price_list()
+        car = create_sample_car()
+        delivery = create_sample_delivery()
+        price_list = PriceList.objects.create(car=car, delivery=delivery)
 
-        self.assertTrue(isinstance(price_list, PriceList))
+        self.assertEqual(price_list.price, car.price)
+
         self.assertTrue(isinstance(price_list.car, Car))
         self.assertTrue(isinstance(price_list.delivery, Delivery))
 
@@ -27,7 +30,10 @@ class TestPriceListModel(TestCase):
 class TestOrdersModel(TestCase):
 
     def test_order_creation(self):
-        order = create_sample_orders()
+        car = create_sample_car()
+        delivery = create_sample_delivery()
+        price_list = PriceList.objects.create(car=car, delivery=delivery)
+        order = create_sample_orders(price_list=price_list)
 
         self.assertTrue(isinstance(order, Orders))
         self.assertTrue(isinstance(order.client, User))
