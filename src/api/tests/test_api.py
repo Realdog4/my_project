@@ -6,7 +6,7 @@ from rest_framework.status import (HTTP_200_OK, HTTP_201_CREATED,
                                    HTTP_204_NO_CONTENT, HTTP_401_UNAUTHORIZED)
 from rest_framework.test import APIClient
 
-from autoshipping.models import Car
+from autoshipping.models import Car, Category
 from autoshipping.utils.samples import create_sample_car
 
 
@@ -22,23 +22,25 @@ class CarAPITestCase(TestCase):
         response = self.client.get('/api/cars/')
         self.assertEqual(response.status_code, HTTP_200_OK)
 
-    # def test_car_create_view(self):
-    #     self.client.force_authenticate(user=self.user)
-    #     data = {
-    #         'category': 1,
-    #         'name': 'Toyota Camry',
-    #         'brand': 'Toyota',
-    #         'model': 'Camry',
-    #         'year': 2022,
-    #         'description': 'Toyota Camry',
-    #         'vin_code': 'JTNB11HK102345678',
-    #         'mileage': 15000,
-    #         'color': 'Black',
-    #         'price': 28000,
-    #         'image': 'https://cdn2.riastatic.com/photosnew/auto/photo/bmw_4-series__511308392f.webp',
-    #     }
-    #     response = self.client.post(reverse("api:car-create"), data, format='json')
-    #     self.assertEqual(response.status_code, HTTP_201_CREATED)
+    def test_car_create_view(self):
+        self.client.force_authenticate(user=self.user)
+        category = Category.objects.create(name="One")
+        data = {
+            'category': category.id,
+            'name': 'Toyota Camry',
+            'brand': 'Toyota',
+            'model': 'Camry',
+            'year': 2022,
+            'description': 'Toyota Camry',
+            'vin_code': 'JTNB11HK102345668',
+            'mileage': 15000,
+            'color': 'Black',
+            'price': 28000,
+            'image': 'https://cdn2.riastatic.com/photosnew/auto/photo/bmw_4-series__511308392f.webp',
+        }
+
+        response = self.client.post(reverse("api:car-create"), data, format='json')
+        self.assertEqual(response.status_code, HTTP_201_CREATED)
 
     def test_car_delete_view(self):
         self.client.force_authenticate(user=self.user)

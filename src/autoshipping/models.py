@@ -12,7 +12,7 @@ class Category(models.Model):
 
 
 class Car(models.Model):
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, default=None)
     name = models.CharField(max_length=255)
     brand = models.CharField(max_length=255)
     model = models.CharField(max_length=255)
