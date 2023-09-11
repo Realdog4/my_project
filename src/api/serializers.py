@@ -3,7 +3,7 @@ from rest_framework.fields import CharField
 from rest_framework.serializers import ModelSerializer
 
 from account.models import User
-from autoshipping.models import Car, PriceList, Category
+from autoshipping.models import Car, Category, PriceList
 
 
 class UserSerializer(ModelSerializer):
@@ -19,6 +19,3 @@ class CarSerializer(ModelSerializer):
         model = Car
         fields = ('name', 'category', 'brand', 'model', 'year', 'description', 'vin_code', 'mileage', 'color', 'price',
                   'image')
-
-
-
