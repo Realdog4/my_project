@@ -1,13 +1,14 @@
 FROM python:3.11-rc-slim
 
 RUN apt update
-RUN mkdir /authoshipping
+RUN mkdir /autoshipping
 
-WORKDIR /authoshipping
+WORKDIR /autoshipping
 
 COPY ./src ./src
+COPY ./commands ./commands
 COPY ./requirements.txt ./requirements.txt
 
-RUN  python -m pip install --upgrade pip & pip install -r ./requirements.txt
+RUN pip install -r ./requirements.txt
 
-CMD ["python", "src/manage.py", "runserver", "8008"]
+CMD ["bash"]
