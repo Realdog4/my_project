@@ -3,8 +3,8 @@ from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 from rest_framework import permissions, routers
 
-from .views import (CarCreateView, CarDeleteView, CarListView, CarUpdateView,
-                    UserViewSet)
+from .views import (CarCreateView, CarDeleteView, CarDetailView, CarListView,
+                    CarUpdateView, UserViewSet)
 
 app_name = "api"
 router = routers.DefaultRouter()
@@ -26,4 +26,5 @@ urlpatterns = [
     path('cars/create/', CarCreateView.as_view(), name='car-create'),
     path('cars/<int:pk>/update/', CarUpdateView.as_view(), name='car-update'),
     path('cars/<int:pk>/delete/', CarDeleteView.as_view(), name='car-delete'),
+    path('api/cars/<int:pk>/', CarDetailView.as_view(), name='car-detail')
 ]
