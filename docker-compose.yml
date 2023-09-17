@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  backend:
+    build: ./
+    container_name: autoshipping_container
+    working_dir: /autoshipping
+    ports:
+      - 8008:8010
+    command:
+      - ./commands/start_server_dev.sh
+    volumes:
+      - ./src:/autoshipping/src
+      - ./commands:/autoshipping/commands
+    env_file:
+      - .env
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:12
+    ports:
+      - 5432:5432
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    env_file:
+      - .env
+
+volumes:
+    pg_data: { }
