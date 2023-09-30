@@ -8,7 +8,7 @@ services:
     ports:
       - 8008:8010
     command:
-      - ./commands/start_server_dev.sh
+      - ./commands/start_server_${MODE}.sh
     volumes:
       - ./src:/autoshipping/src
       - ./commands:/autoshipping/commands
@@ -53,10 +53,23 @@ services:
       - .env
     restart: on-failure
 
+  nginx:
+    image: nginx:1.19
+    volumes:
+      - static_content:/autoshipping/src/static
+      - media_content:/autoshipping/src/media
+      - ./nginx:/etc/nginx/conf.d
+    ports:
+      - 80:80
+      - 443:443
+    env_file:
+      - .env
+    depends_on:
+      - backend
 
 volumes:
-  pg_data: { }
-  pgadmin_data: { }
   static_content: { }
   media_content: { }
+  pg_data: { }
+  pgadmin_data: { }
   mongo_data: { }
