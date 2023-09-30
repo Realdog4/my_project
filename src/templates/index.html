@@ -23,7 +23,7 @@
       </a>
 
       <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-        <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="#">Catalog</a>
+        <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'cars:car_list' %}">Catalog</a>
         <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="#">About us</a>
         <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="#">Contacts</a>
           <div class="nav-link dropdown text-end">
@@ -49,74 +49,73 @@
         </div>
       </nav>
     </div>
-
-    <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-      <h1 class="display-4 fw-normal text-body-emphasis">Instant Car Shipping Quotes for Top-Rated Car Transport Service</h1>
-      <div class="d-flex gap-5 pt-5 pb-5 mt-3 align-items-center">
-        <img src="https://media.angi.com/s3fs-public/Cars-carrier-truck-highway-road-.jpeg?impolicy=leadImage" width="50%">
-        <p class="fs-5 text-body-secondary">Other car transport companies ship cars. We strive for more with our auto
-          transportation services. Our low-priced car delivery service has changed the car shipping industry for the better.
-          It's our life's work to provide travelers like you with auto shipping solutions that are fast, secure, and always
-          affordable. If you're wondering how much it will cost you to ship a car with Nexus, our blazing-fast auto transport
-          price calculator will shine some light on things. Your average auto transport cost per mile primarily depends
-          on the distance of your vehicle shipment, and whether you ship a car with an open carrier or closed carrier.</p>
-        </div>
-    </div>
   </header>
 
-  <main>
+  <main class="px-3 cover-container">
       {% block content %}
-    <h2 class="text-center mb-5">Average Car Shipping Cost Per Mile</h2>
-    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-      <div class="col">
-        <div class="card mb-4 rounded-3 shadow-sm">
-          <div class="card-header py-3">
-            <h4 class="my-0 fw-normal">Less than 500 miles</h4>
+      <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+        <h1 class="display-4 fw-normal text-body-emphasis">Instant Car Shipping Quotes for Top-Rated Car Transport Service</h1>
+        <div class="d-flex gap-5 pt-5 pb-5 mt-3 align-items-center">
+          <img src="https://media.angi.com/s3fs-public/Cars-carrier-truck-highway-road-.jpeg?impolicy=leadImage" width="50%">
+          <p class="fs-5 text-body-secondary">Other car transport companies ship cars. We strive for more with our auto
+            transportation services. Our low-priced car delivery service has changed the car shipping industry for the better.
+            It's our life's work to provide travelers like you with auto shipping solutions that are fast, secure, and always
+            affordable. If you're wondering how much it will cost you to ship a car with Nexus, our blazing-fast auto transport
+            price calculator will shine some light on things. Your average auto transport cost per mile primarily depends
+            on the distance of your vehicle shipment, and whether you ship a car with an open carrier or closed carrier.</p>
           </div>
-          <div class="card-body">
-            <span class="mt-3 mb-4">Average cost</span>
-            <h1 class="card-title pricing-card-title mb-5">$630 - $930<small class="text-body-secondary fw-light"></small></h1>
-            <p>We don't require any money down to book your order. You will only be charged once your auto transport is
-              assigned to a driver and a pickup date is scheduled. We will contact you to let you know when your transport is dispatched.</p>
-            <button type="button" class="w-100 btn btn-lg btn-outline-primary">Details</button>
-          </div>
-        </div>
       </div>
-      <div class="col">
-        <div class="card mb-4 rounded-3 shadow-sm">
-          <div class="card-header py-3">
-            <h4 class="my-0 fw-normal">Between 500-2500 miles</h4>
-          </div>
-          <div class="card-body">
-            <span class="mt-3 mb-4">Average cost</span>
-            <h1 class="card-title pricing-card-title mb-5">$1,135 - $1.550<small class="text-body-secondary fw-light"></small></h1>
-            <p>We require all of our car transport carriers to have their own active cargo insurance. We also carry our
-              own contingent auto insurance policy, and a gap coverage option, so you are 100% covered with a $0 deductible.</p>
-            <button type="button" class="w-100 btn btn-lg btn-outline-primary">Details</button>
+      <h2 class="text-center mb-5">Average Car Shipping Cost Per Mile</h2>
+      <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+        <div class="col">
+          <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3">
+              <h4 class="my-0 fw-normal">Less than 500 miles</h4>
+            </div>
+            <div class="card-body">
+              <span class="mt-3 mb-4">Average cost</span>
+              <h1 class="card-title pricing-card-title mb-5">$630 - $930<small class="text-body-secondary fw-light"></small></h1>
+              <p>We don't require any money down to book your order. You will only be charged once your auto transport is
+                assigned to a driver and a pickup date is scheduled. We will contact you to let you know when your transport is dispatched.</p>
+              <button type="button" class="w-100 btn btn-lg btn-outline-primary">Details</button>
+            </div>
           </div>
         </div>
+        <div class="col">
+          <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3">
+              <h4 class="my-0 fw-normal">Between 500-2500 miles</h4>
+            </div>
+            <div class="card-body">
+              <span class="mt-3 mb-4">Average cost</span>
+              <h1 class="card-title pricing-card-title mb-5">$1,135 - $1.550<small class="text-body-secondary fw-light"></small></h1>
+              <p>We require all of our car transport carriers to have their own active cargo insurance. We also carry our
+                own contingent auto insurance policy, and a gap coverage option, so you are 100% covered with a $0 deductible.</p>
+              <button type="button" class="w-100 btn btn-lg btn-outline-primary">Details</button>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3 text-bg-primary border-primary">
+              <h4 class="my-0 fw-normal">Over 2500 miles</h4>
+            </div>
+            <div class="card-body">
+              <span class="mt-3 mb-4">Average cost</span>
+              <h1 class="card-title pricing-card-title mb-5">$1,350 - $1,830<small class="text-body-secondary fw-light"></small></h1>
+              <p>We understand that a delayed delivery can be a major inconvenience. That's why we offer to pay for your
+                rental car if your delivery takes more than 14 days once picked up. We also pay for your car wash if your vehicle is delivered dirty.</p>
+              <button type="button" class="w-100 btn btn-lg btn-outline-primary">Details</button>
+            </div>
+          </div>
       </div>
-      <div class="col">
-        <div class="card mb-4 rounded-3 shadow-sm">
-          <div class="card-header py-3 text-bg-primary border-primary">
-            <h4 class="my-0 fw-normal">Over 2500 miles</h4>
-          </div>
-          <div class="card-body">
-            <span class="mt-3 mb-4">Average cost</span>
-            <h1 class="card-title pricing-card-title mb-5">$1,350 - $1,830<small class="text-body-secondary fw-light"></small></h1>
-            <p>We understand that a delayed delivery can be a major inconvenience. That's why we offer to pay for your
-              rental car if your delivery takes more than 14 days once picked up. We also pay for your car wash if your vehicle is delivered dirty.</p>
-            <button type="button" class="w-100 btn btn-lg btn-outline-primary">Details</button>
-          </div>
-        </div>
-    </div>
       {% endblock %}
-  </main>
+    </main>
 
-  <footer class="pt-4 my-md-5 pt-md-5 border-top">
-    <div class="row">
+  <footer class="p-4 my-md-5 pt-md-5 border-top">
+    <div class="row text-center">
       <div class="col-12 col-md">
-        <img class="mb-2" src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="" width="24" height="19">
+        <img src="https://img.freepik.com/premium-vector/fast-shipping-logo_10250-3129.jpg" alt="" width="150" height="130">
         <small class="d-block mb-3 text-body-secondary">© 2017–2023</small>
       </div>
       <div class="col-6 col-md">

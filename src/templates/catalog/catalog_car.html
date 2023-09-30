@@ -1,0 +1,31 @@
+{% extends "index.html" %}
+{% load static %}
+{% block content %}
+    <section class="text-center">
+        <div class="d-flex justify-content-center mb-5">
+            <form class="d-flex" role="search" method="GET" style="width: 50%; height: 2.6em; margin-top: 15px;">
+                <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">
+                <button style="width: 15em" class="btn btn-outline-primary" type="submit">Search car</button>
+            </form>
+        </div>
+                {% for car in car_list %}
+        <div class="d-inline-block me-4 mb-4 text-center" style="width: 30%">
+            <div class="card">
+                {% if car.image %}
+                <img src="{{ car.image.url }}" alt="img {{ car.name }}" class="card-img-top">
+                {% else %}
+                <img src="https://static.vecteezy.com/system/resources/previews/005/548/771/non_2x/modern-shape-automotive-car-sport-logo-icon-illustration-design-vector.jpg" alt="img">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ car.name }}</h5>
+                    <p class="card-text">{{ car.brand }}</p>
+                    <p class="card-text">{{ car.model }}</p>
+                    <a href="{% url 'cars:details' car.pk %}" class="btn btn-primary">Details</a>
+                </div>
+            </div>
+        </div>
+            {% empty %}
+        <p class="fs-1">No cars found.</p>
+            {% endfor %}
+    </section>
+{% endblock content %}

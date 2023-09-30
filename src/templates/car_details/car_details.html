@@ -1,0 +1,20 @@
+{% extends "index.html" %}
+{% load static %}
+{% block content %}
+<a href="{% url 'cars:car_list' %}" class="btn btn-secondary mt-5 mb-5">Back</a>
+<div class="card text-center">
+  <h5 class="card-header">{{ details.name }}</h5>
+  <div class="card-body">
+    <h5 class="card-title">Brand: {{ details.brand }}</h5>
+    <h5 class="card-title">Model: {{ details.model }}</h5>
+    <h5 class="card-title">Year: {{ details.year }}</h5>
+    <p class="text-center">Vin code: {{ details.vin_code }}</p>
+    <p class="text-center">Mileage: {{ details.mileage }} km</p>
+    <p class="text-center">Color: {{ details.color }}</p>
+    <p class="card-text">Description: {{ details.description }}</p>
+    <h2 class="text-center m-3">Price: {{ details.price }} UAN</h2>
+    <a href="#" class="btn btn-primary">Go buy</a>
+  </div>
+</div>
+
+{% endblock content %}
