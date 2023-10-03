@@ -140,9 +140,9 @@ CELERY_ACCEPT_CONTENT = ["application/json"]
 CELERY_RESULT_SERIALIZER = "json"
 CELERY_TASK_SERIALIZER = "json"
 
-# CELERY_BEAT_SCHEDULE = {
-#     "some_periodic_task": {
-#         "task": "autoshipping.tasks.generate_category_task",
-#         "schedule": crontab(minute="*/2")
-#     }
-# }
+CELERY_BEAT_SCHEDULE = {
+    "some_periodic_task": {
+        "task": "autoshipping.tasks.create_sample_car_task",
+        "schedule": crontab(minute="*/2")
+    }
+}

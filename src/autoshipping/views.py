@@ -11,8 +11,6 @@ from .tasks import (
     generate_category_task,
     create_sample_car_task,
     create_sample_delivery_task,
-    create_sample_price_list_task,
-    create_sample_orders_task,
 )
 
 
