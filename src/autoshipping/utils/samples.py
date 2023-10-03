@@ -1,5 +1,5 @@
 from datetime import datetime
-from random import choice, randint
+import random
 
 from django.utils.timezone import make_aware, timedelta
 
@@ -7,23 +7,29 @@ from account.models import User
 
 from ..models import Car, Category, Delivery, Orders, PriceList
 
+CATEGORY_NAMES = ["Passenger car", "SUV", "Truck", "Electric vehicle", "Luxury car"]
+
+
+def generate_category():
+    name = random.choice(CATEGORY_NAMES)
+    return Category.objects.create(name=name)
 
 def create_sample_car():
     categories = ["Sedan", "SUV", "Truck"]
     colors = ["Red", "Blue", "Black", "White"]
 
-    category = Category.objects.create(name=choice(categories))
+    category = Category.objects.create(name=random.choice(categories))
     car = Car.objects.create(
         category=category,
-        name=f"Car {randint(1, 100)}",
-        brand=f"Brand {randint(1, 10)}",
-        model=f"Model {randint(1, 5)}",
-        year=randint(2000, 2023),
+        name=f"Car {random.randint(1, 100)}",
+        brand=f"Brand {random.randint(1, 10)}",
+        model=f"Model {random.randint(1, 5)}",
+        year=random.randint(2000, 2023),
         description="Sample description",
-        vin_code=f"VIN{randint(10000000000000000, 99999999999999999)}",
-        mileage=randint(0, 100000),
-        color=choice(colors),
-        price=randint(1000, 50000)
+        vin_code=f"VIN{random.randint(10000000000000000, 99999999999999999)}",
+        mileage=random.randint(0, 100000),
+        color=random.choice(colors),
+        price=random.randint(1000, 50000)
     )
     return car
 
@@ -31,9 +37,9 @@ def create_sample_car():
 def create_sample_delivery():
     delivery = Delivery.objects.create(
         delivery_date=make_aware(datetime.now()),
-        distance=randint(50, 500),
-        duration=timedelta(hours=randint(1, 5)),
-        cost=randint(10, 100)
+        distance=random.randint(50, 500),
+        duration=timedelta(hours=random.randint(1, 5)),
+        cost=random.randint(10, 100)
     )
     return delivery
 
@@ -44,7 +50,7 @@ def create_sample_price_list(car=None):
     delivery = create_sample_delivery()
     price_list = PriceList.objects.create(
         car=car,
-        price=randint(1000, 50000),
+        price=random.randint(1000, 50000),
         delivery=delivery
     )
     return price_list
@@ -59,7 +65,7 @@ def create_sample_orders(client=None, price_list=None):
         price_list = create_sample_price_list()
     order = Orders.objects.create(
         client=client,
-        status=choice(["Pending", "Processing", "Completed"]),
+        status=random.choice(["Pending", "Processing", "Completed"]),
         price_list=price_list
     )
     return order

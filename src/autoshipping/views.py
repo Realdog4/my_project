@@ -1,10 +1,19 @@
 from django.db.models import Q
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import DetailView, ListView, TemplateView
 
 from autoshipping.models import Car
+from django.http import JsonResponse
+from .tasks import (
+    generate_category_task,
+    create_sample_car_task,
+    create_sample_delivery_task,
+    create_sample_price_list_task,
+    create_sample_orders_task,
+)
 
 
 class IndexView(TemplateView):
@@ -41,3 +50,19 @@ class CarDetailView(DetailView):
     template_name = 'car_details/car_details.html'
     context_object_name = 'details'
     pk_url_kwarg = "pk"
+
+
+def generate_category_view(request):
+    generate_category_task.delay()
+    return HttpResponse("Category generation task has been scheduled")
+
+
+def create_sample_car_view(request):
+    create_sample_car_task.delay()
+    return HttpResponse("Sample car creation task has been scheduled")
+
+
+def create_sample_delivery_view(request):
+    create_sample_delivery_task.delay()
+    return HttpResponse("Sample delivery creation task has been scheduled")
+
